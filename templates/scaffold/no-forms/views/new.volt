@@ -1,25 +1,42 @@
 
 {{ form("$plural$/create", "method":"post") }}
 
+</br>
 <table width="100%">
     <tr>
-        <td align="left">{{ link_to("$plural$", "Go Back") }}</td>
-        <td align="right">{{ submit_button("Save") }}</td>
+        <td align="left"><button type="button" class="btn btn-outline btn-primary">{{ link_to("$plural$", "Go Back") }}</button></td>       
+        <td align="right"><button type="submit" class="btn btn-outline btn-primary">Save</button></td>
     </tr>
 </table>
+
+</br>
 
 {{ content() }}
 
-<div align="center">
-    <h1>Create $plural$</h1>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+		<div class="panel-heading">
+    		<h1>Create $plural$</h1>
+		</div>
+
+		<div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+	               	$captureFields$
+	             	<thead>
+	                    <tr>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <tr>
+	                   	</tr>
+	                </tbody>
+              	</table>
+            </div>
+
+            </br>
+			<div align="right"><button type="submit" class="btn btn-default">Save</button></div>
+		</div>
+	</div>
 </div>
-
-<table>
-$captureFields$
-    <tr>
-        <td></td>
-        <td>{{ submit_button("Save") }}</td>
-    </tr>
-</table>
-
 </form>

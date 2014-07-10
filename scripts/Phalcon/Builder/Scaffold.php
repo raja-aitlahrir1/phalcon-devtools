@@ -377,10 +377,10 @@ class Scaffold extends Component
     private function _makeField($attribute, $dataType, $relationField, $selectDefinition)
     {
         $code = "\t" . '<tr>' . PHP_EOL .
-                "\t\t" . '<td align="right">' . PHP_EOL .
+                "\t\t" . '<div align="left">' . PHP_EOL .
                 "\t\t\t" . '<label for="' . $attribute . '">' . $this->_getPossibleLabel($attribute) . '</label>' . PHP_EOL .
-                "\t\t" . '</td>' . PHP_EOL .
-                "\t\t" . '<td align="left">';
+                "\t\t" . '</div>' . PHP_EOL .
+                "\t\t" . '<div align="left">';
 
         if (isset($relationField[$attribute])) {
             $code .= PHP_EOL . "\t\t\t\t" . '<?php echo $this->tag->select(array("' . $attribute . '", $' . $selectDefinition[$attribute]['varName'] .
@@ -423,11 +423,11 @@ class Scaffold extends Component
      */
     private function _makeFieldVolt($attribute, $dataType, $relationField, $selectDefinition)
     {
-        $code = "\t" . '<tr>' . PHP_EOL .
-                "\t\t" . '<td align="right">' . PHP_EOL .
+        $code = "\t" . '<div>' . PHP_EOL .
+                "\t\t" . '<div align="left">' . PHP_EOL .
                 "\t\t\t" . '<label for="' . $attribute . '">' . $this->_getPossibleLabel($attribute) . '</label>' . PHP_EOL .
-                "\t\t" . '</td>' . PHP_EOL .
-                "\t\t" . '<td align="left">';
+                "\t\t" . '</div>' . PHP_EOL .
+                "\t\t" . '<div align="left">';
 
         if (isset($relationField[$attribute])) {
             $code .= PHP_EOL . "\t\t\t\t" . '{{ select("' . $attribute . '", ' . $selectDefinition[$attribute]['varName'] .
@@ -436,26 +436,26 @@ class Scaffold extends Component
 
             switch ($dataType) {
                 case Column::TYPE_CHAR:
-                    $code .= PHP_EOL . "\t\t\t\t" . '{{ text_field("' . $attribute . '") }}';
+                    $code .= PHP_EOL . "\t\t\t\t" . '{{ text_field("' . $attribute . '", "class" : "form-control") }}';
                     break;
                 case Column::TYPE_DECIMAL:
                 case Column::TYPE_INTEGER:
-                    $code .= PHP_EOL . "\t\t\t" . '{{ text_field("' . $attribute . '", "type" : "numeric") }}';
+                    $code .= PHP_EOL . "\t\t\t" . '{{ text_field("' . $attribute . '", "type" : "numeric", "class" : "form-control") }}';
                     break;
                 case Column::TYPE_DATE:
-                    $code .= PHP_EOL . "\t\t\t\t" . '{{ text_field("' . $attribute . '", "type" : "date") }}';
+                    $code .= PHP_EOL . "\t\t\t\t" . '{{ text_field("' . $attribute . '", "type" : "date", "class" : "form-control") }}';
                     break;
                 case Column::TYPE_TEXT:
-                    $code .= PHP_EOL . "\t\t\t\t" . '{{ text_field("' . $attribute . '", "type" : "date") }}';
+                    $code .= PHP_EOL . "\t\t\t\t" . '{{ text_field("' . $attribute . '", "type" : "date", "class" : "form-control") }}';
                     break;
                 default:
-                    $code .= PHP_EOL . "\t\t\t" . '{{ text_field("' . $attribute . '", "size" : 30) }}';
+                    $code .= PHP_EOL . "\t\t\t" . '{{ text_field("' . $attribute . '", "size" : 30, "class" : "form-control") }}';
                     break;
             }
         }
 
-        $code .= PHP_EOL . "\t\t" . '</td>';
-        $code .= PHP_EOL . "\t" . '</tr>' . PHP_EOL;
+        $code .= PHP_EOL . "\t\t" . '</div>';
+        $code .= PHP_EOL . "\t" . '</div>' . PHP_EOL;
 
         return $code;
     }

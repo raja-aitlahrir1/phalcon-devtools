@@ -2,21 +2,32 @@
 {{ content() }}
 
 <div align="right">
-	{{ link_to("$plural$/new", "Create $plural$") }}
+	</br>
+	<button type="button" class="btn btn-outline btn-primary">{{ link_to("$plural$/new", "Create $plural$") }}</button></td>
 </div>
+</br>
 
 {{ form("$plural$/search", "method":"post", "autocomplete" : "off") }}
 
-<div align="center">
-    <h1>Search $plural$</h1>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h1>Search $plural$</h1>
+        </div>
+        
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                $captureFields$
+                    <thead>
+                        <tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-
-<table>
-$captureFields$
-	<tr>
-		<td></td>
-		<td>{{ submit_button("Search") }}</td>
-	</tr>
-</table>
-
-</form>
